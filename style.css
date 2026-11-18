@@ -20,3 +20,5 @@ main{padding-top:calc(var(--top-height,100px) + 12px);padding-bottom:calc(var(--
 main{padding-top:calc(var(--top-height,110px) + 12px);padding-bottom:calc(var(--bottom-height,220px) + 24px)}
 html{scroll-padding-top:120px;scroll-padding-bottom:240px}
 footer{padding-bottom:12px}
+
+.word-filter label{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}.word-filter select{flex:1;max-width:240px;min-width:0;font-size:16px}
