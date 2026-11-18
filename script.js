@@ -6,7 +6,7 @@ const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){let j=Math.floor(Math.r
 const el=(tag,txt,cls)=>{let e=document.createElement(tag);if(txt)e.textContent=txt;if(cls)e.className=cls;return e};
 function button(txt,fn,cls){let b=el('button',txt,cls);b.onclick=fn;return b}
 function updateStats(){let n=WORDS.filter(w=>progress[w.id]==='known').length;$('total').textContent=`${n} / ${WORDS.length} вивчено`;$('overall').value=n/WORDS.length*100;}
-function categories(){ $('categories').replaceChildren();for(const c of ['Усі','Овочі','Фрукти','Числа','Кольори','Дні тижня','Місяці','Тварини']){$('categories').append(button(c,()=>{category=c;build();categories()},c===category?'active':''))}}
+function categories(){const select=$('categories');select.replaceChildren();for(const c of ['Усі','Овочі','Фрукти','Числа','Кольори','Дні тижня','Місяці','Тварини']){const option=el('option',c);option.value=c;select.append(option)}select.value=category;select.onchange=()=>{category=select.value;build()}}
 function build(random=false){deck=WORDS.filter(w=>(category==='Усі'||w.category===category)&&($('filter').value==='all'||($('filter').value==='review'?progress[w.id]==='review':progress[w.id]!=='known')));if(random)deck=shuffle(deck);index=0;flipped=false;answered=false;score=0;attempts=0;render()}
 function move(n){if(!deck.length)return;index=(index+n+deck.length)%deck.length;flipped=false;answered=false;render()}
 function mark(known){if(!deck[index])return;progress[deck[index].id]=known?'known':'review';save();move(1)}
