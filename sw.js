@@ -1,4 +1,4 @@
-const CACHE='kotoba-v4';
+const CACHE='kotoba-v5';
 const ROOT=new URL('./',self.location.href).href;
 const ASSETS=['./','index.html','style.css','words.js','script.js','manifest.webmanifest','icon.svg'].map(p=>new URL(p,ROOT).href);
 self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(ASSETS.map(url=>new Request(url,{cache:'reload'})))).then(()=>self.skipWaiting())));
